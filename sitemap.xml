@@ -95,14 +95,7 @@
   </url>
   
   <url>
-    <loc>https://xunyang1.github.io/tags/js/</loc>
-    <lastmod>2021-07-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xunyang1.github.io/tags/xss/</loc>
+    <loc>https://xunyang1.github.io/tags/sql%E6%B3%A8%E5%85%A5/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -116,14 +109,21 @@
   </url>
   
   <url>
-    <loc>https://xunyang1.github.io/tags/sql%E6%B3%A8%E5%85%A5/</loc>
+    <loc>https://xunyang1.github.io/tags/DVWA/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xunyang1.github.io/tags/DVWA/</loc>
+    <loc>https://xunyang1.github.io/tags/js/</loc>
+    <lastmod>2021-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xunyang1.github.io/tags/xss/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -195,14 +195,14 @@
   </url>
   
   <url>
-    <loc>https://xunyang1.github.io/categories/xss/</loc>
+    <loc>https://xunyang1.github.io/categories/SQL/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xunyang1.github.io/categories/SQL/</loc>
+    <loc>https://xunyang1.github.io/categories/xss/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

@@ -53,11 +53,11 @@
       
         <tags>
             
+            <tag> web安全 </tag>
+            
             <tag> js </tag>
             
             <tag> xss </tag>
-            
-            <tag> web安全 </tag>
             
         </tags>
       
@@ -107,9 +107,9 @@
       
         <tags>
             
-            <tag> web安全 </tag>
-            
             <tag> sql注入 </tag>
+            
+            <tag> web安全 </tag>
             
             <tag> DVWA </tag>
             
