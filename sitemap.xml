@@ -2,56 +2,63 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2021/07/14/dvwa_sql/</loc>
+    <loc>https://xunyang1.github.io/2021/07/14/dvwa_sql/</loc>
+    
+    <lastmod>2021-07-15</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xunyang1.github.io/2021/07/15/dvwa_xss/</loc>
+    
+    <lastmod>2021-07-15</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xunyang1.github.io/2021/07/15/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2021-07-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2021/07/15/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://xunyang1.github.io/2021/07/14/gin/</loc>
     
     <lastmod>2021-07-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2021/07/14/gin/</loc>
+    <loc>https://xunyang1.github.io/2021/07/14/docker/</loc>
     
     <lastmod>2021-07-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2021/07/14/docker/</loc>
+    <loc>https://xunyang1.github.io/2021/07/14/go_jichu/</loc>
     
     <lastmod>2021-07-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2021/07/14/go_jichu/</loc>
+    <loc>https://xunyang1.github.io/categories/index.html</loc>
     
     <lastmod>2021-07-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/categories/index.html</loc>
+    <loc>https://xunyang1.github.io/tags/index.html</loc>
     
     <lastmod>2021-07-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/tags/index.html</loc>
-    
-    <lastmod>2021-07-14</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/05/13/hello-world/</loc>
+    <loc>https://xunyang1.github.io/2021/05/13/hello-world/</loc>
     
     <lastmod>2021-05-13</lastmod>
     
@@ -59,100 +66,114 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://example.com/tags/docker/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/tags/docker/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Mysql/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/tags/Mysql/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/gorm/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/tags/gorm/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/sql%E6%B3%A8%E5%85%A5/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/tags/sql%E6%B3%A8%E5%85%A5/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/web%E5%AE%89%E5%85%A8/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/tags/web%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/DVWA/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/tags/DVWA/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Golang/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/tags/js/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/HTTP/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/tags/xss/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Socket/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/tags/Golang/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/tags/template/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/template/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/tags/HTTP/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/tags/Socket/</loc>
+    <lastmod>2021-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xunyang1.github.io/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2021-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xunyang1.github.io/tags/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -160,29 +181,36 @@
 
   
   <url>
-    <loc>http://example.com/categories/docker/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/categories/docker/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/SQL/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/categories/SQL/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Golang/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/categories/xss/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E6%95%B0%E5%AD%A6/</loc>
-    <lastmod>2021-07-14</lastmod>
+    <loc>https://xunyang1.github.io/categories/Golang/</loc>
+    <lastmod>2021-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xunyang1.github.io/categories/%E6%95%B0%E5%AD%A6/</loc>
+    <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

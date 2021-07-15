@@ -3,11 +3,11 @@
   <title>浔阳江头夜送客</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://xunyang1.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
-  <updated>2021-07-14T16:06:27.635Z</updated>
-  <id>http://example.com/</id>
+  <link href="https://xunyang1.github.io/"/>
+  <updated>2021-07-15T01:38:29.440Z</updated>
+  <id>https://xunyang1.github.io/</id>
   
   <author>
     <name>XUPT_w</name>
@@ -17,9 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>DVWA之XSS练习</title>
+    <link href="https://xunyang1.github.io/2021/07/15/dvwa_xss/"/>
+    <id>https://xunyang1.github.io/2021/07/15/dvwa_xss/</id>
+    <published>2021-07-15T01:35:37.930Z</published>
+    <updated>2021-07-15T01:38:29.440Z</updated>
+    
+    <content type="html"><![CDATA[<p>一、实验环境</p><p> 一台win10电脑，既做服务器端，也是客户端。</p><p>二、实验原理</p><p>反射型XSS用户通过Web客户端提交给服务端的数据，立刻用于解析和显示该用户的结果页面(数据没有在服务端存储)。</p><p>存储型XSS用户通过Web客户端提交给服务端的数据，由服务端保存，然后永久显示在其他用户的页面上。</p><p>三、实验步骤</p><p>(1)登录dvwa，点击反射型xss low级别：</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image002.jpg"></p><p>  2.测试输入<script>alert（123）</script></p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092334.jpg"></p><ol start="3"><li>查看源码并没有任何字符处理措施：</li></ol><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092354.jpg"></p><p>(2) 将级别改为meduim，执行<script>alert（123）</script>测试</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092401.jpg"></p><p>说明可能存在字符消除函数，删掉了<script>或者</script></p><p>所以输入&lt;scri<script>pt>alert(123)</script>试试</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092413.jpg"></p><p>成功</p><p>查看源码，只是经过了简单的将<script>转换为null的过程：</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092419.jpg"></p><p>（3）切换到high级别</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092423.jpg"></p><p>换一个其他弹窗代码，不用<script>改为<img src=0 onerror="alert('xss')"></p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092427.jpg"></p><p>成功弹窗</p><p>（2）存储型xss，级别low：</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092431.jpg"></p><p>尝试输入<script>alert(‘xss’)</script>发现输入到l时无法再进行输入</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092436.jpg"></p><p>查看网页源代码，发现输入最大长度为10：</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092741.jpg"></p><p>所以尝试使用burp抓包修改参数</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092443.jpg"></p><p>成功弹窗</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092449.jpg"></p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092453.jpg"></p><p>数据库中成功加入javascript代码，而且在每次刷新页面加载评论时都会出发script代码</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092457.jpg"></p><p>刷新页面，如图：</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092500.jpg"></p><p>2.更改为medium级别</p><p>继续利用burp修改参数为<script>alert(‘xss’)</script>发现返回：</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092510.jpg"></p><p>并没有出现弹窗，并且用户名变为了alert（‘xss’）所以猜测可能使用了字符替代函数，因为js区分大小写，这次可以使用大小写来绕过:</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092514.jpg"></p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092517.jpg"></p><p>成功绕过，显示弹窗，且每次刷新都会弹窗</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092525.jpg"></p><p>查看数据库，成功添加</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092529.jpg"></p><p>3.改为high级别，查看源码继续使用了正则表达式</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092534.jpg"></p><p>所以不使用&lt; script &gt;弹窗，改用img标签</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092538.jpg"></p><p>成功弹窗</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092542.jpg"></p><p>查看数据库，成功添加，再后来每一次刷新都会触发一次js代码</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715092549.jpg"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;一、实验环境&lt;/p&gt;
+&lt;p&gt; 一台win10电脑，既做服务器端，也是客户端。&lt;/p&gt;
+&lt;p&gt;二、实验原理&lt;/p&gt;
+&lt;p&gt;反射型XSS用户通过Web客户端提交给服务端的数据，立刻用于解析和显示该用户的结果页面(数据没有在服务端存储)。&lt;/p&gt;
+&lt;p&gt;存储型XSS用户通过Web</summary>
+      
+    
+    
+    
+    <category term="xss" scheme="https://xunyang1.github.io/categories/xss/"/>
+    
+    
+    <category term="web安全" scheme="https://xunyang1.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="js" scheme="https://xunyang1.github.io/tags/js/"/>
+    
+    <category term="xss" scheme="https://xunyang1.github.io/tags/xss/"/>
+    
+  </entry>
+  
+  <entry>
     <title>考研数一笔记</title>
-    <link href="http://example.com/2021/07/15/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/"/>
-    <id>http://example.com/2021/07/15/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/</id>
+    <link href="https://xunyang1.github.io/2021/07/15/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/"/>
+    <id>https://xunyang1.github.io/2021/07/15/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/</id>
     <published>2021-07-14T16:03:09.047Z</published>
     <updated>2021-07-14T16:06:27.635Z</updated>
     
@@ -33,21 +65,21 @@
     
     
     
-    <category term="数学" scheme="http://example.com/categories/%E6%95%B0%E5%AD%A6/"/>
+    <category term="数学" scheme="https://xunyang1.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
     
     
-    <category term="考研笔记" scheme="http://example.com/tags/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/"/>
+    <category term="考研笔记" scheme="https://xunyang1.github.io/tags/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>DVWA之sql注入练习</title>
-    <link href="http://example.com/2021/07/14/dvwa_sql/"/>
-    <id>http://example.com/2021/07/14/dvwa_sql/</id>
+    <link href="https://xunyang1.github.io/2021/07/14/dvwa_sql/"/>
+    <id>https://xunyang1.github.io/2021/07/14/dvwa_sql/</id>
     <published>2021-07-14T15:22:55.890Z</published>
-    <updated>2021-07-14T16:24:43.653Z</updated>
+    <updated>2021-07-15T01:59:44.060Z</updated>
     
-    <content type="html"><![CDATA[<p>一、实验环境</p><p>  一台win10电脑，既做服务器端，也是客户端。</p><p>二、实验原理</p><p>攻击者通过对服务器端注入恶意的SQL命令，破坏SQL查询语句的结构，从而达到执行恶意SQL语句的目的。</p><p>三、实验步骤</p><h2 id="low级别"><a href="#low级别" class="headerlink" title="low级别"></a>low级别</h2><p>（1）登录dvwa，设置等级为low</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image001.png"></p><ol start="2"><li>第一步，判断是否存在注入，是字符型还是数字型</li></ol><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image003.png"></p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image005.png"></p><p>输入1’尝试</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image007.png"></p><p>提示1周围出现多个单引号</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image009.jpg"></p><p>故猜测sql查询语句为：</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image010.png"></p><ol start="3"><li>猜测sql语句总共查询字段数（利用order by子句）</li></ol><p>（1）根据猜测的sql查询语句来构造</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image012.png"></p><p>注:# 注释掉sql语句后面引号</p><p>（2）输入构造语句</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image014.jpg"></p><p>输入1’ or 1=1 order by 2</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image016.jpg"></p><p>输入1’ or 1=1 order by 3</p><p><img src="file:///C:/Users/浔阳江~1/AppData/Local/Temp/msohtmlclip1/01/clip_image017.png" alt="img"></p><p>显示无第三列，所以猜测只有两个字段firstname以及secondname。</p><ol start="4"><li>确定字段顺序</li></ol><p>输入1’union select 1,2#</p><p><img src="C:\Users\浔阳江头夜送客\AppData\Local\Temp\msohtmlclip1\01\clip_image018.png" alt="clip_image018"></p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image019.png"></p><p>得到first_name在前，surname在后</p><ol start="5"><li>获取数据库名</li></ol><p>注：利用database（）函数和联合查询union</p><p><img src="file:///C:/Users/浔阳江~1/AppData/Local/Temp/msohtmlclip1/01/clip_image021.jpg" alt="img"></p><p>输入得：</p><p><img src="file:///C:/Users/浔阳江~1/AppData/Local/Temp/msohtmlclip1/01/clip_image022.png" alt="IMG_256"></p><p>由此可看得数据库名为dvwa</p><ol start="6"><li>获取表名，和字段名</li></ol><p>利用mysql自带得表名存储表information_schema.tables</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image024.jpg"></p><p>输入1’union select 1,group_concat(table_name) from information_schema.tables where table_schema=database() #</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image026.jpg"></p><p>注：结果两列利用group_concat合并</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image027.png"></p><p>同理利用1′union select 1,group_concat(column_name) from information_schema.columns where table_name=’users’#</p><p>得：</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image029.jpg"></p><ol start="7"><li>获得所有字段数据</li></ol><p>输入1′ or 1=1 union select group_concat(user_id,first_name,last_name),group_concat(password) from users #</p><p>得到：<img src="file:///C:/Users/浔阳江~1/AppData/Local/Temp/msohtmlclip1/01/clip_image031.jpg" alt="IMG_256"></p><p>分析源码：</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image033.jpg"></p><h2 id="medium级别"><a href="#medium级别" class="headerlink" title="medium级别"></a>medium级别</h2><p>（2）设置等级为medium</p><p> <img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/image-20210714231917348.png"></p><p>表单变成了可选项，目的是为了让用户在规定范围内选择，防止sql注入，但是我们可以利用burpsuit抓包，修改相应参数来达到sql注入。</p><ol><li>判断是字符型注入还是数字型</li></ol><p>修改参数为 2’ or 333=333 #</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image036.jpg"></p><p>返回页面，说明存在字符转义函数</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image038.jpg"></p><p>试试数字型注入</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image040.jpg"></p><p>成功爆出其他行数据，说明存在数字型注入</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image042.jpg"></p><p>总结：存在数字型注入且服务器代码存在字符转义</p><ol start="2"><li>推出sql语句中字段数，和字段顺序</li></ol><p>继续利用order by子句</p><p><img src="C:\Users\浔阳江头夜送客\AppData\Local\Temp\msohtmlclip1\01\clip_image044.jpg" alt="clip_image044"></p><p>返回结果：first_name被排序说明第一个字段为first_name</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image046.jpg"></p><p>继续以第二列排序，结果显示其surname被排序说明第二列为surname</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image047.png"></p><p>继续排序第三行，发现无第三行说明只有两行且前字段为first_name,后字段为surname</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image049.jpg"></p><p><img src="file:///C:/Users/浔阳江~1/AppData/Local/Temp/msohtmlclip1/01/clip_image050.png" alt="img"></p><p>猜测sql语句为：</p><p>SELECT first_name, last_name FROM 表名 WHERE user_id = $id</p><ol start="3"><li>获取数据库名，以此获得表名</li></ol><p><img src="file:///C:/Users/浔阳江~1/AppData/Local/Temp/msohtmlclip1/01/clip_image052.jpg" alt="IMG_256"></p><p>返回结果显示表名为dvwa</p><p><img src="file:///C:/Users/浔阳江~1/AppData/Local/Temp/msohtmlclip1/01/clip_image054.jpg" alt="IMG_256"></p><ol start="4"><li>利用数据库名获取表名</li></ol><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image056.jpg"></p><p>返回结果显示有两个表guestbook，users</p><p><img src="file:///C:/Users/浔阳江~1/AppData/Local/Temp/msohtmlclip1/01/clip_image058.jpg" alt="IMG_256"></p><ol start="5"><li>获取表内字段名，因为存在字符转义所以将’users’改为十六进制0x7573657273：</li></ol><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image060.jpg"></p><p>返回界面显示了所有字段名</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image062.jpg"></p><ol start="6"><li>获取用户名密码</li></ol><p><img src="file:///C:/Users/浔阳江~1/AppData/Local/Temp/msohtmlclip1/01/clip_image064.jpg" alt="IMG_256"></p><p>返回界面成功显示</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image066.jpg"></p><ol start="7"><li>源码分析：</li></ol><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image068.jpg"></p><h2 id="high级别"><a href="#high级别" class="headerlink" title="high级别"></a>high级别</h2><p>（2）.high级别</p><ol><li>分析源码</li></ol><p><img src="file:///C:/Users/浔阳江~1/AppData/Local/Temp/msohtmlclip1/01/clip_image070.jpg" alt="IMG_256"></p><p>构造下列语句：</p><p>1’ or 1=1#</p><p>得到：</p><p>user_id = ‘1’ or 1=1#’ LIMIT 1;</p><p>成功注释掉limit 1，下面注入步骤和上述相同</p>]]></content>
+    <content type="html"><![CDATA[<p>一、实验环境</p><p>  一台win10电脑，既做服务器端，也是客户端。</p><p>二、实验原理</p><p>攻击者通过对服务器端注入恶意的SQL命令，破坏SQL查询语句的结构，从而达到执行恶意SQL语句的目的。</p><p>三、实验步骤</p><h2 id="low级别"><a href="#low级别" class="headerlink" title="low级别"></a>low级别</h2><p>（1）登录dvwa，设置等级为low</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image001.png"></p><ol start="2"><li>第一步，判断是否存在注入，是字符型还是数字型</li></ol><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image003.png"></p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image005.png"></p><p>输入1’尝试</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image007.png"></p><p>提示1周围出现多个单引号</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image009.jpg"></p><p>故猜测sql查询语句为：</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image010.png"></p><ol start="3"><li>猜测sql语句总共查询字段数（利用order by子句）</li></ol><p>（1）根据猜测的sql查询语句来构造</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image012.png"></p><p>注:# 注释掉sql语句后面引号</p><p>（2）输入构造语句</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image014.jpg"></p><p>输入1’ or 1=1 order by 2</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image016.jpg"></p><p>输入1’ or 1=1 order by 3</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715094141.png"></p><p>显示无第三列，所以猜测只有两个字段firstname以及secondname。</p><ol start="4"><li>确定字段顺序</li></ol><p>输入1’union select 1,2#</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715094920.png"></p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image019.png"></p><p>得到first_name在前，surname在后</p><ol start="5"><li>获取数据库名</li></ol><p>注：利用database（）函数和联合查询union</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715094919.png"></p><p>输入得：</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715094922.png"></p><p>由此可看得数据库名为dvwa</p><ol start="6"><li>获取表名，和字段名</li></ol><p>利用mysql自带得表名存储表information_schema.tables</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image024.jpg"></p><p>输入1’union select 1,group_concat(table_name) from information_schema.tables where table_schema=database() #</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image026.jpg"></p><p>注：结果两列利用group_concat合并</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image027.png"></p><p>同理利用1′union select 1,group_concat(column_name) from information_schema.columns where table_name=’users’#</p><p>得：</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image029.jpg"></p><ol start="7"><li>获得所有字段数据</li></ol><p>输入1′ or 1=1 union select group_concat(user_id,first_name,last_name),group_concat(password) from users #</p><p>得到：<img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715094921.png"></p><p>分析源码：</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image033.jpg"></p><h2 id="medium级别"><a href="#medium级别" class="headerlink" title="medium级别"></a>medium级别</h2><p>（2）设置等级为medium</p><p> <img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/image-20210714231917348.png"></p><p>表单变成了可选项，目的是为了让用户在规定范围内选择，防止sql注入，但是我们可以利用burpsuit抓包，修改相应参数来达到sql注入。</p><ol><li>判断是字符型注入还是数字型</li></ol><p>修改参数为 2’ or 333=333 #</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image036.jpg"></p><p>返回页面，说明存在字符转义函数</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image038.jpg"></p><p>试试数字型注入</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image040.jpg"></p><p>成功爆出其他行数据，说明存在数字型注入</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image042.jpg"></p><p>总结：存在数字型注入且服务器代码存在字符转义</p><ol start="2"><li>推出sql语句中字段数，和字段顺序</li></ol><p>继续利用order by子句</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715094924.png"></p><p>返回结果：first_name被排序说明第一个字段为first_name</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image046.jpg"></p><p>继续以第二列排序，结果显示其surname被排序说明第二列为surname</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image047.png"></p><p>继续排序第三行，发现无第三行说明只有两行且前字段为first_name,后字段为surname</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image049.jpg"></p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715094913.png"></p><p>猜测sql语句为：</p><p>SELECT first_name, last_name FROM 表名 WHERE user_id = $id</p><ol start="3"><li>获取数据库名，以此获得表名</li></ol><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715094949.png"></p><p>返回结果显示表名为dvwa</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715094925.png"></p><ol start="4"><li>利用数据库名获取表名</li></ol><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image056.jpg"></p><p>返回结果显示有两个表guestbook，users</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715095552.png"></p><ol start="5"><li>获取表内字段名，因为存在字符转义所以将’users’改为十六进制0x7573657273：</li></ol><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image060.jpg"></p><p>返回界面显示了所有字段名</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image062.jpg"></p><ol start="6"><li>获取用户名密码</li></ol><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715094947.png"></p><p>返回界面成功显示</p><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image066.jpg"></p><ol start="7"><li>源码分析：</li></ol><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/clip_image068.jpg"></p><h2 id="high级别"><a href="#high级别" class="headerlink" title="high级别"></a>high级别</h2><p>（2）.high级别</p><ol><li>分析源码</li></ol><p><img src="https://cdn.jsdelivr.net/gh/xunyang1/picture_bed/images/20210715094948.png"></p><p>构造下列语句：</p><p>1’ or 1=1#</p><p>得到：</p><p>user_id = ‘1’ or 1=1#’ LIMIT 1;</p><p>成功注释掉limit 1，下面注入步骤和上述相同</p>]]></content>
     
     
       
@@ -62,21 +94,21 @@
     
     
     
-    <category term="SQL" scheme="http://example.com/categories/SQL/"/>
+    <category term="SQL" scheme="https://xunyang1.github.io/categories/SQL/"/>
     
     
-    <category term="sql注入" scheme="http://example.com/tags/sql%E6%B3%A8%E5%85%A5/"/>
+    <category term="sql注入" scheme="https://xunyang1.github.io/tags/sql%E6%B3%A8%E5%85%A5/"/>
     
-    <category term="web安全" scheme="http://example.com/tags/web%E5%AE%89%E5%85%A8/"/>
+    <category term="web安全" scheme="https://xunyang1.github.io/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="DVWA" scheme="http://example.com/tags/DVWA/"/>
+    <category term="DVWA" scheme="https://xunyang1.github.io/tags/DVWA/"/>
     
   </entry>
   
   <entry>
     <title>Golang之gin框架</title>
-    <link href="http://example.com/2021/07/14/gin/"/>
-    <id>http://example.com/2021/07/14/gin/</id>
+    <link href="https://xunyang1.github.io/2021/07/14/gin/"/>
+    <id>https://xunyang1.github.io/2021/07/14/gin/</id>
     <published>2021-07-14T14:48:06.599Z</published>
     <updated>2021-07-14T14:50:51.504Z</updated>
     
@@ -90,21 +122,21 @@
     
     
     
-    <category term="Golang" scheme="http://example.com/categories/Golang/"/>
+    <category term="Golang" scheme="https://xunyang1.github.io/categories/Golang/"/>
     
     
-    <category term="Golang" scheme="http://example.com/tags/Golang/"/>
+    <category term="Golang" scheme="https://xunyang1.github.io/tags/Golang/"/>
     
-    <category term="template" scheme="http://example.com/tags/template/"/>
+    <category term="template" scheme="https://xunyang1.github.io/tags/template/"/>
     
-    <category term="中间件" scheme="http://example.com/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    <category term="中间件" scheme="https://xunyang1.github.io/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
     
   </entry>
   
   <entry>
     <title>Docker初识</title>
-    <link href="http://example.com/2021/07/14/docker/"/>
-    <id>http://example.com/2021/07/14/docker/</id>
+    <link href="https://xunyang1.github.io/2021/07/14/docker/"/>
+    <id>https://xunyang1.github.io/2021/07/14/docker/</id>
     <published>2021-07-14T14:27:12.005Z</published>
     <updated>2021-07-14T14:37:15.782Z</updated>
     
@@ -120,21 +152,21 @@
     
     
     
-    <category term="docker" scheme="http://example.com/categories/docker/"/>
+    <category term="docker" scheme="https://xunyang1.github.io/categories/docker/"/>
     
     
-    <category term="docker" scheme="http://example.com/tags/docker/"/>
+    <category term="docker" scheme="https://xunyang1.github.io/tags/docker/"/>
     
-    <category term="Mysql" scheme="http://example.com/tags/Mysql/"/>
+    <category term="Mysql" scheme="https://xunyang1.github.io/tags/Mysql/"/>
     
-    <category term="gorm" scheme="http://example.com/tags/gorm/"/>
+    <category term="gorm" scheme="https://xunyang1.github.io/tags/gorm/"/>
     
   </entry>
   
   <entry>
     <title>Go基础笔记</title>
-    <link href="http://example.com/2021/07/14/go_jichu/"/>
-    <id>http://example.com/2021/07/14/go_jichu/</id>
+    <link href="https://xunyang1.github.io/2021/07/14/go_jichu/"/>
+    <id>https://xunyang1.github.io/2021/07/14/go_jichu/</id>
     <published>2021-07-14T04:11:39.798Z</published>
     <updated>2021-07-14T14:12:13.963Z</updated>
     
@@ -150,23 +182,23 @@
     
     
     
-    <category term="Golang" scheme="http://example.com/categories/Golang/"/>
+    <category term="Golang" scheme="https://xunyang1.github.io/categories/Golang/"/>
     
     
-    <category term="Golang" scheme="http://example.com/tags/Golang/"/>
+    <category term="Golang" scheme="https://xunyang1.github.io/tags/Golang/"/>
     
-    <category term="HTTP" scheme="http://example.com/tags/HTTP/"/>
+    <category term="HTTP" scheme="https://xunyang1.github.io/tags/HTTP/"/>
     
-    <category term="Socket" scheme="http://example.com/tags/Socket/"/>
+    <category term="Socket" scheme="https://xunyang1.github.io/tags/Socket/"/>
     
-    <category term="并发编程" scheme="http://example.com/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    <category term="并发编程" scheme="https://xunyang1.github.io/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2021/05/13/hello-world/"/>
-    <id>http://example.com/2021/05/13/hello-world/</id>
+    <link href="https://xunyang1.github.io/2021/05/13/hello-world/"/>
+    <id>https://xunyang1.github.io/2021/05/13/hello-world/</id>
     <published>2021-05-13T13:51:00.089Z</published>
     <updated>2021-05-13T13:51:00.089Z</updated>
     
