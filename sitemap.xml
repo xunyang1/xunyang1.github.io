@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xunyang1.github.io/2021/07/14/go_jichu/</loc>
+    
+    <lastmod>2021-07-15</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xunyang1.github.io/2021/07/14/docker/</loc>
+    
+    <lastmod>2021-07-15</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xunyang1.github.io/2021/07/14/dvwa_sql/</loc>
     
     <lastmod>2021-07-15</lastmod>
@@ -17,27 +31,6 @@
   
   <url>
     <loc>https://xunyang1.github.io/2021/07/15/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2021-07-14</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xunyang1.github.io/2021/07/14/gin/</loc>
-    
-    <lastmod>2021-07-14</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xunyang1.github.io/2021/07/14/docker/</loc>
-    
-    <lastmod>2021-07-14</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xunyang1.github.io/2021/07/14/go_jichu/</loc>
     
     <lastmod>2021-07-14</lastmod>
     
@@ -95,27 +88,6 @@
   </url>
   
   <url>
-    <loc>https://xunyang1.github.io/tags/sql%E6%B3%A8%E5%85%A5/</loc>
-    <lastmod>2021-07-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xunyang1.github.io/tags/web%E5%AE%89%E5%85%A8/</loc>
-    <lastmod>2021-07-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xunyang1.github.io/tags/DVWA/</loc>
-    <lastmod>2021-07-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://xunyang1.github.io/tags/js/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
@@ -130,21 +102,35 @@
   </url>
   
   <url>
+    <loc>https://xunyang1.github.io/tags/web%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2021-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xunyang1.github.io/tags/sql%E6%B3%A8%E5%85%A5/</loc>
+    <lastmod>2021-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xunyang1.github.io/tags/DVWA/</loc>
+    <lastmod>2021-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xunyang1.github.io/tags/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://xunyang1.github.io/tags/Golang/</loc>
-    <lastmod>2021-07-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xunyang1.github.io/tags/template/</loc>
-    <lastmod>2021-07-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xunyang1.github.io/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -171,24 +157,10 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://xunyang1.github.io/tags/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-07-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   
   <url>
     <loc>https://xunyang1.github.io/categories/docker/</loc>
-    <lastmod>2021-07-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xunyang1.github.io/categories/SQL/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -202,7 +174,7 @@
   </url>
   
   <url>
-    <loc>https://xunyang1.github.io/categories/Golang/</loc>
+    <loc>https://xunyang1.github.io/categories/SQL/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -210,6 +182,13 @@
   
   <url>
     <loc>https://xunyang1.github.io/categories/%E6%95%B0%E5%AD%A6/</loc>
+    <lastmod>2021-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xunyang1.github.io/categories/Golang/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
