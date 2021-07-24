@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xunyang1.github.io/2021/07/24/SQL%E6%B3%A8%E5%85%A5/</loc>
+    
+    <lastmod>2021-07-24</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xunyang1.github.io/2021/07/20/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</loc>
     
     <lastmod>2021-07-21</lastmod>
@@ -144,14 +151,14 @@
   </url>
   
   <url>
-    <loc>https://xunyang1.github.io/tags/sql%E6%B3%A8%E5%85%A5/</loc>
+    <loc>https://xunyang1.github.io/tags/XSS/</loc>
     <lastmod>2021-07-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://xunyang1.github.io/tags/XSS/</loc>
+    <loc>https://xunyang1.github.io/tags/sql%E6%B3%A8%E5%85%A5/</loc>
     <lastmod>2021-07-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
